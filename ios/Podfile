@@ -1,0 +1,23 @@
+require_relative '../node_modules/react-native/scripts/react_native_pods'
+require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
+
+platform :ios, '11.0'
+
+
+def common_pods
+  rn_path = '../node_modules/react-native'
+  config = use_native_modules!
+  use_react_native!(:path => rn_path)
+  permissions_path = '../node_modules/react-native-permissions/ios'
+
+  pod 'Permission-Camera', :path => "#{permissions_path}/Camera"
+
+
+
+  use_flipper!({ 'Flipper' => '0.99.0' })
+end
+
+target 'newapp' do
+	common_pods
+
+end
